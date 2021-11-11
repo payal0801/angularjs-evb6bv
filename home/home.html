@@ -1,4 +1,48 @@
-<h1>Hello {{$ctrl.name}}!</h1>
-<p>
-  Start editing <b>home/home.html</b> :)
-</p>
+<h1>Candidates</h1>
+<table>
+  <tr>
+    <td><input type="checkbox" ng-model="male" />Male</td>
+    <td><input type="checkbox" ng-model="selectGender" />Female</td>
+    <td>
+      <input
+        type="text"
+        placeholder="Whom you are looking for"
+        ng-model="searchText"
+      />
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Gender</th>
+  </tr>
+  <tr
+    ng-repeat="candidate in candidate| filter: searchText |orderBy:'first_name'  "
+  >
+    <td>{{candidate.id}}</td>
+    <td>{{candidate.first_name}}</td>
+    <td>{{candidate.last_name}}</td>
+    <td>{{candidate.email}}</td>
+    <td>{{candidate.gender}}</td>
+  </tr>
+</table>
+<h1>Add New Candidate</h1>
+<table>
+  <tr>
+    <td><input type="text" placeholder="First Name" /></td>
+    <td><input type="test" placeholder="Last Name" /></td>
+  </tr>
+  <tr>
+    <td><input type="text" placeholder="Email" /></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="gender" />Male</td>
+    <td><input type="radio" name="gender" />Female</td>
+    <td><input type="button" ng-click="add()" />Add</td>
+  </tr>
+</table>
